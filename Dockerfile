@@ -1,14 +1,11 @@
-FROM python:3.7-alpine
+FROM python:3.8
 
-
-COPY ./requirements.txt /app/requirements.txt
+USER root
 
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+ADD . /app
 
-COPY . /app
+RUN  pip install -r /app/requirements1.txt
 
-ENTRYPOINT ["python"]
-
-CMD [ "flask", "run", "--host=0.0.0.0"]
+CMD [ "python" , "app.py"]
